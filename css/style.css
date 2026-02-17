@@ -2406,4 +2406,209 @@ body {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+
+}
+
+/* ============================================ */
+/* IN DEVELOPMENT STYLES */
+/* ============================================ */
+
+/* Main section greyed out */
+.branch-network.in-development {
+    position: relative;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    opacity: 0.9;
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+/* Subtle pattern overlay */
+.branch-network.in-development::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.02) 0px,
+        rgba(0, 0, 0, 0.02) 10px,
+        rgba(0, 0, 0, 0.04) 10px,
+        rgba(0, 0, 0, 0.04) 20px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Development badge in header */
+.branch-network.in-development .section-header {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.dev-badge {
+    display: inline-block;
+    background: #95a5a6;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* Disabled cards */
+.location-card.disabled {
+    background: #f9f9f9;
+    border: 2px dashed #bdc3c7;
+    opacity: 0.8;
+    pointer-events: none; /* Prevents clicking/hovering */
+    position: relative;
+    overflow: hidden;
+}
+
+.location-card.disabled::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(149, 165, 166, 0.1), rgba(189, 195, 199, 0.1));
+    z-index: 1;
+}
+
+.location-card.disabled .card-icon {
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+    filter: grayscale(100%);
+}
+
+.location-card.disabled h3,
+.location-card.disabled .location-info p,
+.location-card.disabled i {
+    color: #95a5a6 !important;
+    filter: grayscale(80%);
+}
+
+.location-card.disabled .status-badge {
+    background: #95a5a6 !important;
+    color: white;
+    opacity: 0.8;
+}
+
+/* Remove hover effects from disabled cards */
+.location-card.disabled:hover {
+    transform: none;
+    border-color: #bdc3c7;
+    box-shadow: none;
+}
+
+/* Development overlay message */
+.development-overlay {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 5px solid #f39c12;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.development-overlay i {
+    font-size: 3rem;
+    color: #f39c12;
+    margin-bottom: 15px;
+}
+
+.development-overlay p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Optional: Add tooltip on hover */
+.location-card.disabled {
+    position: relative;
+    cursor: not-allowed;
+}
+
+.location-card.disabled::after {
+    content: '🚧 In Development';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f39c12;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 10;
+    opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dev-badge {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
+    
+    .development-overlay {
+        padding: 20px;
+        margin-top: 30px;
+    }
+    
+    .development-overlay i {
+        font-size: 2.5rem;
+    }
+    
+    .development-overlay p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .development-overlay {
+        margin-top: 20px;
+        padding: 15px;
+    }
+    
+    .location-card.disabled::after {
+        font-size: 0.6rem;
+        padding: 3px 8px;
+    }
 }
